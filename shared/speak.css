@@ -1,0 +1,16 @@
+/* Texte sind antippenbar; ein dezenter Hinweis genügt. */
+:where(h1, h2, h3, p, summary,
+       .brand, .stat, .progress-text, .small-print,
+       .prompt, .hint, .type-name, .type-desc,
+       .word-label, .big-word, .heard-text,
+       .mic-status, .mic-heard, .toast-text,
+       .syllable-tile, .letter-slot, .start):hover {
+  cursor: help;
+  text-decoration: underline dotted rgba(94, 53, 177, 0.45);
+  text-underline-offset: 3px;
+}
+
+[data-no-read]:hover {
+  cursor: auto;
+  text-decoration: none;
+}

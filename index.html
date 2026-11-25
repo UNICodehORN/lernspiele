@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#5e35b1">
+  <link rel="icon" href="data:,">
+  <title>Lernspiele – Hauptmenü</title>
+  <link rel="stylesheet" href="shared/speak.css">
+  <link rel="stylesheet" href="shared/readme.css">
+  <link rel="stylesheet" href="shared/footer.css">
+  <style>
+    :root {
+      --purple: #7c4dff;
+      --purple-dark: #5e35b1;
+      --blue: #1976d2;
+      --blue-dark: #0d47a1;
+      --ink: #263238;
+      --muted: #607d8b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: calc(20px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(160deg, #f3f0ff 0%, #e8f7ff 55%, #fff6e5 100%);
+      background-attachment: fixed;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #app { width: 100%; max-width: 720px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 22px; }
+    .hero-emoji { font-size: clamp(48px, 13vw, 72px); line-height: 1.1; }
+    h1 { font-size: clamp(28px, 7vw, 40px); margin: 8px 0; color: var(--purple-dark); }
+    .hero p { font-size: clamp(15px, 4vw, 19px); color: var(--muted); margin: 0; }
+    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 560px) { .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .menu-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 230px;
+      padding: 24px 18px;
+      border-radius: 26px;
+      text-decoration: none;
+      color: var(--ink);
+      background: #fff;
+      border: 3px solid #e3dbff;
+      box-shadow: 0 8px 0 #e6defb, 0 16px 30px rgba(80, 50, 160, 0.12);
+      transition: transform 0.08s, box-shadow 0.08s;
+      touch-action: manipulation;
+    }
+    .menu-card.rechnen { border-color: #d6e9ff; box-shadow: 0 8px 0 #d7e9fb, 0 16px 30px rgba(25, 100, 180, 0.12); }
+    .menu-card:active { transform: translateY(4px); box-shadow: 0 4px 0 #e6defb; }
+    .menu-card.rechnen:active { box-shadow: 0 4px 0 #d7e9fb; }
+    .menu-icon { font-size: clamp(56px, 14vw, 78px); line-height: 1.1; }
+    .menu-card h2 { font-size: clamp(22px, 5.5vw, 28px); margin: 8px 0 6px; color: var(--purple-dark); }
+    .menu-card.rechnen h2 { color: var(--blue-dark); }
+    .menu-card p { font-size: clamp(14px, 3.8vw, 17px); line-height: 1.45; color: var(--muted); margin: 0 0 16px; }
+    .start {
+      margin-top: auto;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--purple);
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(16px, 4vw, 19px);
+    }
+    .rechnen .start { background: var(--blue); }
+    .small-print { text-align: center; font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 1.5; }
+    .adult-btn { display: inline-block; margin-top: 10px; padding: 0; border: 0; background: none; color: var(--blue-dark); font-size: 13px; text-decoration: underline; cursor: pointer; }
+  </style>
+</head>
+<body onload="AppBootstrap.startMenu()">
+  <main id="app">
+    <header class="hero">
+      <div class="hero-emoji" aria-hidden="true">🌈 📚 🌟</div>
+      <h1>Lernspiele</h1>
+      <p>Wähle, was du heute üben möchtest.</p>
+    </header>
+
+    <nav class="menu-grid" aria-label="Spiele auswählen">
+      <a class="menu-card lesen" href="lesen/index.html">
+        <span class="menu-icon" aria-hidden="true">📖</span>
+        <h2>Lesen</h2>
+        <p id="lesenDesc">Wörter, Silben, Lesen und Sprechen üben – mit Vorlesen und Mikrofon.</p>
+        <span class="start">Los geht’s →</span>
+      </a>
+      <a class="menu-card rechnen" href="rechnen/index.html">
+        <span class="menu-icon" aria-hidden="true">🔢</span>
+        <h2>Rechnen</h2>
+        <p>Zählen, Zahlenreihen, Plus und Minus bis 20.</p>
+        <span class="start">Los geht’s →</span>
+      </a>
+    </nav>
+
+    <p class="small-print">Beide Spiele funktionieren offline und sind für Smartphones gemacht. Mit dem 🏠-Button kommst du jederzeit hierher zurück. Tippe auf einen Text – bei Buttons und Links genügt Hovern.</p>
+    <div class="small-print" data-no-read><button id="readmeBtn" class="adult-btn" type="button">ℹ️ Infos für Erwachsene</button></div>
+  </main>
+
+  <div id="readmeOverlay" class="readme-overlay hidden" data-no-read role="dialog" aria-modal="true" aria-label="Informationen für Erwachsene">
+    <div class="readme-panel">
+      <header class="readme-header">
+        <h2>Infos für Erwachsene</h2>
+        <button id="readmeClose" class="readme-close" type="button">Schließen ✖️</button>
+      </header>
+      <article id="readmeContent" class="readme-content"></article>
+    </div>
+  </div>
+
+  <script src="shared/speak.js" data-root="."></script>
+  <script src="shared/footer.js"></script>
+  <script src="shared/markdown.js"></script>
+  <script src="shared/readme.js" data-root="."></script>
+  <script src="shared/app.js" data-root="."></script>
+</body>
+</html>

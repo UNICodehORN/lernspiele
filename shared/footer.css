@@ -1,0 +1,27 @@
+/* Gemeinsamer Footer auf allen Seiten der App. */
+.app-footer {
+  width: min(720px, 100%);
+  margin: 28px auto 0;
+  padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
+  border-top: 2px solid rgba(94, 53, 177, 0.22);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #5e35b1;
+  text-align: center;
+  font-size: clamp(13px, 3.4vw, 15px);
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 4px 14px rgba(80, 50, 160, 0.08);
+}
+
+.app-footer a {
+  color: #0d47a1;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.app-footer a:hover,
+.app-footer a:focus-visible {
+  color: #7c4dff;
+}

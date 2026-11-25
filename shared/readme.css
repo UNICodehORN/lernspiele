@@ -1,0 +1,128 @@
+.readme-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(20, 20, 40, 0.55);
+}
+
+.readme-overlay.hidden {
+  display: none;
+}
+
+.readme-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(760px, 100%);
+  max-height: min(90vh, 900px);
+  overflow: hidden;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.readme-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e3dbff;
+  background: #f5f1ff;
+}
+
+.readme-header h2 {
+  margin: 0;
+  font-size: clamp(18px, 4.5vw, 22px);
+  color: #5e35b1;
+}
+
+.readme-close {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #7c4dff;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.readme-content {
+  overflow: auto;
+  padding: 16px 20px 28px;
+  color: #263238;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-overflow-scrolling: touch;
+}
+
+.readme-content h1,
+.readme-content h2,
+.readme-content h3 {
+  color: #5e35b1;
+  line-height: 1.25;
+}
+
+.readme-content h1 { font-size: 26px; margin: 4px 0 12px; }
+.readme-content h2 { font-size: 21px; margin: 24px 0 10px; }
+.readme-content h3 { font-size: 17px; margin: 18px 0 8px; }
+
+.readme-content p { margin: 10px 0; }
+
+.readme-content ul,
+.readme-content ol {
+  margin: 10px 0;
+  padding-left: 22px;
+}
+
+.readme-content li { margin: 5px 0; }
+
+.readme-content a { color: #0d47a1; }
+
+.readme-content code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #eef1f5;
+  font-size: 0.92em;
+}
+
+.readme-content pre {
+  overflow-x: auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: #263238;
+  color: #eceff1;
+}
+
+.readme-content pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.readme-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.readme-content th,
+.readme-content td {
+  padding: 7px 9px;
+  border: 1px solid #dfe4e8;
+  text-align: left;
+  vertical-align: top;
+}
+
+.readme-content th { background: #f5f1ff; }
+
+.readme-content hr {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px solid #dfe4e8;
+}

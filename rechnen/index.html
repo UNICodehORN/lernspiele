@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="icon" href="data:,">
+  <title>Zahl-Welt – Rechnen üben</title>
+  <link rel="stylesheet" href="../shared/module.css">
+  <link rel="stylesheet" href="../shared/speak.css">
+  <link rel="stylesheet" href="../shared/footer.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../shared/speak.js" data-root=".."></script>
+  <script src="../shared/app.js" data-root=".."></script>
+  <script src="../shared/footer.js"></script>
+  <script src="../shared/audio.js"></script>
+  <script src="numbers.js"></script>
+  <script src="logic.js"></script>
+  <script src="animations.js"></script>
+  <script src="game.js"></script>
+</head>
+<body onload="AppBootstrap.startModule('rechnen', startScreenInit)">
+
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span>🔢</span> Zahl-Welt</div>
+    <div class="stats">
+      <div class="stat"><span id="pts">0</span> Punkte</div>
+      <div class="stat" id="levelBadge">⭐ Level 1</div>
+    </div>
+    <a id="homeBtn" class="icon-btn home-btn" href="../index.html" title="Zum Hauptmenü" aria-label="Zum Hauptmenü">🏠</a>
+    <button id="soundToggle" class="icon-btn" type="button" title="Ton an/aus" aria-label="Ton an oder aus">🔊</button>
+  </header>
+
+  <div class="progress-container" aria-label="Fortschritt">
+    <div id="progressBar" class="progress-fill"></div>
+    <div id="progressText" class="progress-text">Noch 3 Aufgaben bis zum nächsten Level</div>
+  </div>
+
+  <section id="startScreen" class="screen start-screen">
+    <div class="start-card">
+      <div class="start-emoji">1️⃣ 2️⃣ 3️⃣</div>
+      <h1>Willkommen in der Zahl-Welt!</h1>
+      <p>Hier üben wir Zählen, Zahlenreihen, Plus und Minus bis 20. Je mehr du richtig machst, desto schwerer werden die Aufgaben.</p>
+      <h2>Was möchtest du üben?</h2>
+      <div id="typeGrid" class="type-grid"></div>
+      <p class="small-print">Wähle eine Aufgabe aus. Tippe auf einen Text – bei Buttons und Links genügt Hovern.</p>
+    </div>
+  </section>
+
+  <main id="gameScreen" class="screen hidden">
+    <div class="card" id="taskCard">
+      <div id="taskPrompt" class="prompt"></div>
+      <button id="readTaskBtn" class="read-task-btn" type="button">🔊 Aufgabe vorlesen</button>
+      <div id="taskVisual" class="visual"></div>
+      <div id="numberLine" class="number-line hidden" aria-hidden="true"></div>
+      <div id="taskControls" class="controls"></div>
+      <div id="taskHint" class="hint"></div>
+    </div>
+  </main>
+
+  <button id="changeTypeBtn" class="btn btn-ghost change-type" type="button">↩️ Andere Aufgabe wählen</button>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <div id="toastIcon" class="toast-icon">🎉</div>
+  <div class="toast-text"><b id="toastTitle"></b><span id="toastMsg"></span></div>
+</div>
+<div id="emojiToast" class="emoji-toast"></div>
+<div id="failToast" class="emoji-toast fail"></div>
+<div id="firework" class="firework">🎆🎇✨</div>
+<div id="confetti" class="confetti"></div>
+
+</body>
+</html>

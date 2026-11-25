@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7c4dff">
+  <link rel="icon" href="data:,">
+  <title>Wort-Welt – Lesen und Sprechen üben</title>
+  <link rel="stylesheet" href="../shared/module.css">
+  <link rel="stylesheet" href="../shared/speak.css">
+  <link rel="stylesheet" href="../shared/footer.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../shared/speak.js" data-root=".."></script>
+  <script src="../shared/app.js" data-root=".."></script>
+  <script src="../shared/footer.js"></script>
+  <script src="../shared/audio.js"></script>
+  <script src="words.js"></script>
+  <script src="logic.js"></script>
+  <script src="game.js"></script>
+</head>
+<body onload="AppBootstrap.startModule('lesen', startScreenInit)">
+
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span>🌟</span> Wort-Welt</div>
+    <div class="stats">
+      <div class="stat"><span id="pts">0</span> Punkte</div>
+      <div class="stat" id="levelBadge">Level 1</div>
+    </div>
+    <a id="homeBtn" class="icon-btn home-btn" href="../index.html" title="Zum Hauptmenü" aria-label="Zum Hauptmenü">🏠</a>
+    <button id="soundToggle" class="icon-btn" type="button" title="Ton an/aus" aria-label="Ton an oder aus">🔊</button>
+  </header>
+
+  <div class="progress-container" aria-label="Fortschritt">
+    <div id="progressBar" class="progress-fill"></div>
+    <div id="progressText" class="progress-text">Noch 3 Aufgaben bis zum nächsten Level</div>
+  </div>
+
+  <section id="startScreen" class="screen start-screen">
+    <div class="start-card">
+      <div class="start-emoji">🐶 🏠 🍋</div>
+      <h1>Willkommen in der Wort-Welt!</h1>
+      <p>Hier üben wir Wörter, Silben, Lesen und Sprechen. Je mehr du richtig machst, desto schwerer werden die Aufgaben.</p>
+      <h2>Was möchtest du üben?</h2>
+      <div id="typeGrid" class="type-grid"></div>
+      <p class="small-print" id="startHint">Wähle eine Aufgabe aus. Tippe auf einen Text – bei Buttons und Links genügt Hovern. Für das Mikrofon bitte über <b>http://localhost</b> oder eine HTTPS-Seite öffnen – sonst kannst du die Wörter tippen.</p>
+    </div>
+  </section>
+
+  <main id="gameScreen" class="screen hidden">
+    <div class="card" id="taskCard">
+      <div id="taskPrompt" class="prompt"></div>
+      <button id="readTaskBtn" class="read-task-btn" type="button">🔊 Aufgabe vorlesen</button>
+      <div id="taskVisual" class="visual"></div>
+      <div id="taskControls" class="controls"></div>
+      <div id="heardText" class="heard-text" aria-live="polite"></div>
+      <div id="taskHint" class="hint"></div>
+      <button id="skipBtn" class="btn btn-ghost skip-btn hidden" type="button">⏭️ Aufgabe überspringen</button>
+    </div>
+  </main>
+
+  <button id="changeTypeBtn" class="btn btn-ghost change-type" type="button">↩️ Andere Aufgabe wählen</button>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <div id="toastIcon" class="toast-icon">🎉</div>
+  <div class="toast-text"><b id="toastTitle"></b><span id="toastMsg"></span></div>
+</div>
+<div id="emojiToast" class="emoji-toast"></div>
+<div id="failToast" class="emoji-toast fail"></div>
+<div id="firework" class="firework">🎆🎇✨</div>
+<div id="confetti" class="confetti"></div>
+
+<div id="micOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Wort sprechen">
+  <div class="overlay-card">
+    <div id="micIcon" class="mic-icon">🎤</div>
+    <div id="micStatus" class="mic-status">Ich höre zu … Sag das Wort laut!</div>
+    <div id="micHeard" class="mic-heard"></div>
+    <div class="mic-actions">
+      <button id="micRetry" class="btn" type="button">Nochmal 🎤</button>
+      <button id="micCancel" class="btn btn-ghost" type="button">Später</button>
+      <button id="micSkip" class="btn btn-ghost skip-btn hidden" type="button">⏭️ Überspringen</button>
+    </div>
+    <details id="micFallback">
+      <summary>Mikrofon geht nicht? Wort eintippen</summary>
+      <form id="micForm" class="mic-form">
+        <input id="micText" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Wort hier eintippen" aria-label="Wort tippen">
+        <button class="btn" type="submit">Prüfen ✅</button>
+      </form>
+    </details>
+  </div>
+</div>
+
+</body>
+</html>

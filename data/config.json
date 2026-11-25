@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "sources": {
+    "lesen": "data/words.json",
+    "rechnen": "data/counting.json"
+  },
+  "privacy": {
+    "allowExternalApis": true,
+    "allowMicrophone": true
+  }
+}

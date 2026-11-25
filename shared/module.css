@@ -1,0 +1,10 @@
+/* Gemeinsame Styles für die beiden Module (Lesen und Rechnen). */
+
+/* Link vom Modul zurück zum Hauptmenü; die Größe kommt von .icon-btn. */
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
